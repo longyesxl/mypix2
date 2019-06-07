@@ -86,7 +86,7 @@ class pix2pix():
         # combine loss and calculate gradients
         self.loss_G = self.loss_G_L1
         for i in range(len(pred_fake)):
-            self.loss_G+=self.gan_loss(pred_fake[i], pred_real[i])
+            self.loss_G+=self.gan_loss(pred_fake[i], pred_real[i])/len(pred_fake)
         self.loss_G.backward()
 
     def train(self,input):

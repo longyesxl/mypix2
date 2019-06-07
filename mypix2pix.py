@@ -92,10 +92,11 @@ class pix2pix():
     def train(self,input):
         self.forward(input)                   # compute fake images: G(A)
         # update D
-        self.net_D.requires_grad=True # enable backprop for D
-        self.optimizer_D.zero_grad()     # set D's gradients to zero
-        self.backward_D()                # calculate gradients for D
-        self.optimizer_D.step()          # update D's weights
+        for i in range(3):
+            self.net_D.requires_grad=True # enable backprop for D
+            self.optimizer_D.zero_grad()     # set D's gradients to zero
+            self.backward_D()                # calculate gradients for D
+            self.optimizer_D.step()          # update D's weights
         # update G
         self.net_D.requires_grad=False  # D requires no gradients when optimizing G
         self.optimizer_G.zero_grad()        # set G's gradients to zero

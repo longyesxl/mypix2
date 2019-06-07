@@ -114,7 +114,7 @@ class pix2pix():
         
     def start_train(self,epoch_nub):
         for epoch in tqdm.tqdm(range(epoch_nub)):
-            trian_dataloader = DataLoader(self.train_dataset, batch_size=4,shuffle=True, num_workers=4)
+            trian_dataloader = DataLoader(self.train_dataset, batch_size=16,shuffle=True, num_workers=4)
             train_G_loss=0.0
             train_D_loss=0.0
             test_G_loss=0.0
